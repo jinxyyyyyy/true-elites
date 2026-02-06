@@ -52,7 +52,7 @@ h1 {
     font-family: monospace;
 }
 
-/* ===== STAFF ===== */
+/* ===== STAFF CARDS ===== */
 .staff-cards {
     display: flex;
     justify-content: center;
@@ -157,40 +157,30 @@ footer {
 <h2 style="margin-top:40px;">👑 Staff</h2>
 
 <div class="staff-cards">
-
-<a href="https://discord.com/users/925339379751329852" target="_blank"
-   class="discord-card" data-id="925339379751329852">
-    <img class="avatar" src="https://lanyard.cnrad.dev/avatar/925339379751329852.png">
+<a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
+    <img class="avatar" src="https://cdn.discordapp.com/avatars/925339379751329852/a_08086420f12612ec7e196b2ae85feb20.gif">
     <span>Strax</span>
 </a>
 
-<a href="https://discord.com/users/1327983625144238092" target="_blank"
-   class="discord-card" data-id="1327983625144238092">
-    <img class="avatar" src="https://lanyard.cnrad.dev/avatar/1327983625144238092.png">
+<a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
+    <img class="avatar" src="https://cdn.discordapp.com/avatars/1327983625144238092/7ef707180f9e9555b78b40fced2e5d18.webp">
     <span>Leo</span>
 </a>
 
-<a href="https://discord.com/users/1137672913198260234" target="_blank"
-   class="discord-card" data-id="1137672913198260234">
-    <img class="avatar" src="https://lanyard.cnrad.dev/avatar/1137672913198260234.png">
+<a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
+    <img class="avatar" src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp">
     <span>Pepe</span>
 </a>
 
-<a href="https://discord.com/users/1114657059913343117" target="_blank"
-   class="discord-card" data-id="1114657059913343117">
-    <img class="avatar" src="https://lanyard.cnrad.dev/avatar/1114657059913343117.png">
+<a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
+    <img class="avatar" src="https://cdn.discordapp.com/avatars/1114657059913343117/d8564ac76e341bff6a4003e96afe4cd9.webp">
     <span>Koko</span>
 </a>
-
 </div>
 
-<a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">
-Join the Discord 🚀
-</a><br>
+<a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">Join the Discord 🚀</a><br>
 
-<a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">
-Follow on TikTok 🎵
-</a>
+<a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">Follow on TikTok 🎵</a>
 
 <footer>© TrueElites.com</footer>
 
@@ -209,7 +199,8 @@ function updateStaffStatus() {
                 card.classList.remove('online','idle','dnd');
                 const status = res.data?.discord_status;
                 if (status) card.classList.add(status);
-            });
+            })
+            .catch(err => console.log(err));
     });
 }
 
