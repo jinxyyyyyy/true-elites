@@ -8,7 +8,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@300;500&display=swap');
 
 * { box-sizing: border-box; }
+    .join-btn {
+.tiktok-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 45px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #000000, #111111);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.6),
+        0 0 20px rgba(255, 0, 255, 0.4);
+    transition: transform 0.2s;
+}
 
+.tiktok-btn:hover {
+    transform: scale(1.08);
+    
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -52,7 +70,7 @@ h1 {
     font-family: monospace;
 }
 
-/* ===== Discord Cards ===== */
+/* ===== Staff Cards ===== */
 .staff-cards {
     display: flex;
     justify-content: center;
@@ -72,14 +90,15 @@ h1 {
 }
 
 .discord-card img {
-    max-width: 320px;
-    width: 100%;
-    border-radius: 15px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
     transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .discord-card span {
-    margin-top: 8px;
+    margin-top: 10px;
     color: #ff4b4b;
     font-weight: bold;
 }
@@ -112,11 +131,6 @@ h1 {
     font-size: 1.1rem;
     background: linear-gradient(135deg, #ff0000, #ff4b4b);
     box-shadow: 0 0 20px rgba(255,0,0,0.6);
-    transition: transform 0.2s;
-}
-
-.join-btn:hover {
-    transform: scale(1.08);
 }
 
 footer {
@@ -143,45 +157,39 @@ footer {
 </div>
 
 <div class="staff-cards">
-    <a href="https://discord.com/users/925339379751329852" target="_blank"
-       class="discord-card" data-id="925339379751329852">
-        <img src="https://lanyard.cnrad.dev/api/925339379751329852?bg=0b0b0b&borderRadius=15px&animated=true">
+    <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
+        <img alt="Strax Avatar">
         <span>Strax</span>
     </a>
 
-    <a href="https://discord.com/users/1327983625144238092" target="_blank"
-       class="discord-card" data-id="1327983625144238092">
-        <img src="https://lanyard.cnrad.dev/api/1327983625144238092?bg=0b0b0b&borderRadius=15px&animated=true">
+    <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
+        <img alt="Leo Avatar">
         <span>Leo</span>
     </a>
 
-    <a href="https://discord.com/users/1137672913198260234" target="_blank"
-       class="discord-card" data-id="1137672913198260234">
-        <img src="https://lanyard.cnrad.dev/api/1137672913198260234?bg=0b0b0b&borderRadius=15px&animated=true">
+    <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
+        <img alt="Pepe Avatar">
         <span>Pepe</span>
     </a>
 
-    <a href="https://discord.com/users/1114657059913343117" target="_blank"
-       class="discord-card" data-id="1114657059913343117">
-        <img src="https://lanyard.cnrad.dev/api/1114657059913343117?bg=0b0b0b&borderRadius=15px&animated=true">
+    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
+        <img alt="Koko Avatar">
         <span>Koko</span>
     </a>
 </div>
 <p style="margin-top:40px;">
-<strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict❤️<strong>
+<strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict  <strong>
 </p>
-
 <a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">
 Join the Discord 🚀
 </a>
+
 <br><br>
 
-<a class="join-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">
+<a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">
 Follow on TikTok 🎵
 </a>
-<footer>
-© TrueElites.com
-</footer>
+<footer>© TrueElites.com</footer>
 
 </div>
 </div>
@@ -189,26 +197,35 @@ Follow on TikTok 🎵
 <script>
 const REFRESH_INTERVAL = 30000;
 
-function updateStaffStatus() {
+function updateStaff() {
     document.querySelectorAll('.discord-card').forEach(card => {
         const id = card.dataset.id;
+        const img = card.querySelector('img');
 
         fetch(`https://api.lanyard.rest/v1/users/${id}`)
             .then(res => res.json())
             .then(res => {
-                card.classList.remove('online','idle','dnd');
-                const status = res.data?.discord_status;
-                if (status === 'online') card.classList.add('online');
-                if (status === 'idle') card.classList.add('idle');
-                if (status === 'dnd') card.classList.add('dnd');
+                const data = res.data;
+                if (!data) return;
+
+                // Avatar
+                if (data.discord_user.avatar) {
+                    const isGif = data.discord_user.avatar.startsWith("a_");
+                    img.src = `https://cdn.discordapp.com/avatars/${id}/${data.discord_user.avatar}.${isGif ? "gif" : "png"}?size=256`;
+                }
+
+                // Status glow
+                card.classList.remove("online","idle","dnd");
+                if (data.discord_status === "online") card.classList.add("online");
+                if (data.discord_status === "idle") card.classList.add("idle");
+                if (data.discord_status === "dnd") card.classList.add("dnd");
             });
     });
 }
 
-updateStaffStatus();
-setInterval(updateStaffStatus, REFRESH_INTERVAL);
+updateStaff();
+setInterval(updateStaff, REFRESH_INTERVAL);
 </script>
 
 </body>
 </html>
-
