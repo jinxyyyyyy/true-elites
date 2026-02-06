@@ -8,25 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@300;500&display=swap');
 
 * { box-sizing: border-box; }
-    .join-btn {
-.tiktok-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 45px;
-    border-radius: 30px;
-    text-decoration: none;
-    color: white;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, #000000, #111111);
-    box-shadow: 
-        0 0 10px rgba(0, 255, 255, 0.6),
-        0 0 20px rgba(255, 0, 255, 0.4);
-    transition: transform 0.2s;
-}
 
-.tiktok-btn:hover {
-    transform: scale(1.08);
-    
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -75,7 +57,7 @@ h1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 30px;
     margin-top: 40px;
 }
 
@@ -131,6 +113,34 @@ h1 {
     font-size: 1.1rem;
     background: linear-gradient(135deg, #ff0000, #ff4b4b);
     box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    transition: transform 0.2s;
+}
+
+.join-btn:hover {
+    transform: scale(1.08);
+}
+
+/* TikTok Button */
+.tiktok-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 45px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    background: #000;
+    box-shadow:
+        0 0 10px rgba(37,244,238,0.9),
+        0 0 20px rgba(254,44,85,0.9);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tiktok-btn:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 20px rgba(37,244,238,1),
+        0 0 40px rgba(254,44,85,1);
 }
 
 footer {
@@ -177,9 +187,7 @@ footer {
         <span>Koko</span>
     </a>
 </div>
-<p style="margin-top:40px;">
-<strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict  <strong>
-</p>
+
 <a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">
 Join the Discord 🚀
 </a>
@@ -189,6 +197,9 @@ Join the Discord 🚀
 <a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">
 Follow on TikTok 🎵
 </a>
+<p style="margin-top:40px;">
+<strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict  <strong>
+</p>
 <footer>© TrueElites.com</footer>
 
 </div>
@@ -208,13 +219,11 @@ function updateStaff() {
                 const data = res.data;
                 if (!data) return;
 
-                // Avatar
                 if (data.discord_user.avatar) {
                     const isGif = data.discord_user.avatar.startsWith("a_");
                     img.src = `https://cdn.discordapp.com/avatars/${id}/${data.discord_user.avatar}.${isGif ? "gif" : "png"}?size=256`;
                 }
 
-                // Status glow
                 card.classList.remove("online","idle","dnd");
                 if (data.discord_status === "online") card.classList.add("online");
                 if (data.discord_status === "idle") card.classList.add("idle");
