@@ -154,23 +154,23 @@ footer {
 <h2 style="margin-top:40px;">👑 Staff</h2>
 
 <div class="staff-cards">
-    <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
-        <img id="strax-avatar" class="avatar" src="" alt="Strax Avatar">
+    <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/925339379751329852?bg=0b0b0b&borderRadius=15px&animated=true" alt="Strax Avatar">
         <span>Strax</span>
     </a>
 
-    <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
-        <img id="leo-avatar" class="avatar" src="" alt="Leo Avatar">
+    <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/1327983625144238092?bg=0b0b0b&borderRadius=15px&animated=true" alt="Leo Avatar">
         <span>Leo</span>
     </a>
 
-    <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
-        <img id="pepe-avatar" class="avatar" src="" alt="Pepe Avatar">
+    <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/1137672913198260234?bg=0b0b0b&borderRadius=15px&animated=true" alt="Pepe Avatar">
         <span>Pepe</span>
     </a>
 
-    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
-        <img id="koko-avatar" class="avatar" src="" alt="Koko Avatar">
+    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/1114657059913343117?bg=0b0b0b&borderRadius=15px&animated=true" alt="Koko Avatar">
         <span>Koko</span>
     </a>
 </div>
@@ -187,30 +187,5 @@ footer {
 </div>
 </div>
 
-<script>
-// Load Lanyard avatars dynamically (Nitro GIFs included)
-const staff = [
-    {id: "925339379751329852", element: "strax-avatar"},
-    {id: "1327983625144238092", element: "leo-avatar"},
-    {id: "1137672913198260234", element: "pepe-avatar"},
-    {id: "1114657059913343117", element: "koko-avatar"}
-];
-
-staff.forEach(staffMember => {
-    fetch(`https://api.lanyard.rest/v1/users/${staffMember.id}`)
-        .then(res => res.json())
-        .then(data => {
-            const hash = data.data.discord_user.avatar;
-            if (hash) {
-                const isGif = hash.startsWith("a_") ? "gif" : "png";
-                document.getElementById(staffMember.element).src =
-                    `https://cdn.discordapp.com/avatars/${staffMember.id}/${hash}.${isGif}?size=256`;
-            }
-        })
-        .catch(err => console.log(err));
-});
-</script>
-
 </body>
 </html>
-
