@@ -155,19 +155,19 @@ footer {
 
 <div class="staff-cards">
     <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
-        <img class="avatar" src="" alt="Strax Avatar">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/925339379751329852?bg=0b0b0b&borderRadius=15px&animated=true" alt="Strax Avatar">
         <span>Strax</span>
     </a>
     <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
-        <img class="avatar" src="" alt="Leo Avatar">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/1327983625144238092?bg=0b0b0b&borderRadius=15px&animated=true" alt="Leo Avatar">
         <span>Leo</span>
     </a>
     <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
-        <img class="avatar" src="" alt="Pepe Avatar">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/1137672913198260234?bg=0b0b0b&borderRadius=15px&animated=true" alt="Pepe Avatar">
         <span>Pepe</span>
     </a>
     <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
-        <img class="avatar" src="" alt="Koko Avatar">
+        <img class="avatar" src="https://lanyard.cnrad.dev/api/1114657059913343117?bg=0b0b0b&borderRadius=15px&animated=true" alt="Koko Avatar">
         <span>Koko</span>
     </a>
 </div>
@@ -183,25 +183,6 @@ footer {
 
 </div>
 </div>
-
-<script>
-// Auto-load Lanyard avatars (Nitro GIFs, dynamic)
-const staffCards = document.querySelectorAll('.discord-card');
-
-staffCards.forEach(card => {
-    const id = card.dataset.id;
-    fetch(`https://api.lanyard.rest/v1/users/${id}`)
-    .then(res => res.json())
-    .then(data => {
-        const avatarHash = data.data?.discord_user?.avatar;
-        if(avatarHash) {
-            const isGif = avatarHash.startsWith('a_') ? 'gif' : 'png';
-            card.querySelector('.avatar').src = `https://cdn.discordapp.com/avatars/${id}/${avatarHash}.${isGif}?size=256`;
-        }
-    })
-    .catch(err => console.log(err));
-});
-</script>
 
 </body>
 </html>
