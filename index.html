@@ -159,65 +159,65 @@ footer {
 <h2 style="margin-top:40px;">👑 Staff</h2>
 
 <div class="staff-cards">
-<a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
-    <img class="avatar" src="https://lanyard.cnrad.dev/api/925339379751329852?bg=0b0b0b&borderRadius=15px&animated=true">
-    <span>Strax</span>
-</a>
-
-<a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
-    <img class="avatar" src="https://lanyard.cnrad.dev/api/1327983625144238092?bg=0b0b0b&borderRadius=15px&animated=true">
-    <span>Leo</span>
-</a>
-
-<a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
-    <img class="avatar" src="https://lanyard.cnrad.dev/api/1137672913198260234?bg=0b0b0b&borderRadius=15px&animated=true">
-    <span>Pepe</span>
-</a>
-
-<a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
-    <img class="avatar" src="https://lanyard.cnrad.dev/api/1114657059913343117?bg=0b0b0b&borderRadius=15px&animated=true">
-    <span>Koko</span>
-</a>
+    <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
+        <img class="avatar" src="" alt="Strax Avatar">
+        <span>Strax</span>
+    </a>
+    <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
+        <img class="avatar" src="" alt="Leo Avatar">
+        <span>Leo</span>
+    </a>
+    <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
+        <img class="avatar" src="" alt="Pepe Avatar">
+        <span>Pepe</span>
+    </a>
+    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
+        <img class="avatar" src="" alt="Koko Avatar">
+        <span>Koko</span>
+    </a>
 </div>
 
 <p style="margin-top:40px;">
-    <strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict❤️<strong>
+    <strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict❤️</strong>
 </p>
 
 <a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">Join the Discord 🚀</a><br>
-
 <a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">Follow on TikTok 🎵</a>
 
 <footer>© TrueElites.com</footer>
-
 </div>
 </div>
 
 <script>
-const REFRESH_INTERVAL = 30000;
+const REFRESH_INTERVAL = 30000; // 30 seconds
+const staffCards = document.querySelectorAll('.discord-card');
 
-function updateStaffStatus() {
-    document.querySelectorAll('.discord-card').forEach(card => {
+function updateStaff() {
+    staffCards.forEach(card => {
         const id = card.dataset.id;
         fetch(`https://api.lanyard.rest/v1/users/${id}`)
-            .then(res => res.json())
-            .then(res => {
-                card.classList.remove('online','idle','dnd');
-                const status = res.data?.discord_status;
-                if (status) card.classList.add(status);
+        .then(res => res.json())
+        .then(data => {
+            // Update status
+            card.classList.remove('online','idle','dnd');
+            const status = data.data?.discord_status;
+            if(status) card.classList.add(status);
 
-                // Optional: update avatar automatically
-                const avatarEl = card.querySelector('.avatar');
-                if(res.data?.discord_user?.avatar) {
-                    avatarEl.src = `https://lanyard.cnrad.dev/api/${id}?bg=0b0b0b&borderRadius=15px&animated=true&_=${Date.now()}`;
-                }
-            })
-            .catch(err => console.log(err));
+            // Update avatar dynamically (GIFs and real-time)
+            const avatarHash = data.data?.discord_user?.avatar;
+            if(avatarHash) {
+                const isGif = avatarHash.startsWith('a_') ? 'gif' : 'png';
+                card.querySelector('.avatar').src = `https://cdn.discordapp.com/avatars/${id}/${avatarHash}.${isGif}?size=256`;
+            }
+        })
+        .catch(err => console.log(err));
     });
 }
 
-updateStaffStatus();
-setInterval(updateStaffStatus, REFRESH_INTERVAL);
+// Initial load
+updateStaff();
+// Auto-refresh every 30s
+setInterval(updateStaff, REFRESH_INTERVAL);
 </script>
 
 </body>
