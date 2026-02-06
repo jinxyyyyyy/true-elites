@@ -76,7 +76,7 @@ h1 {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    transition: box-shadow 0.3s, transform 0.3s;
+    transition: transform 0.3s;
 }
 
 .discord-card span {
@@ -85,11 +85,6 @@ h1 {
     font-weight: bold;
     color: #ff4b4b;
 }
-
-/* Status glow */
-.online .avatar { box-shadow: 0 0 25px rgba(0,255,0,0.9); }
-.idle .avatar   { box-shadow: 0 0 25px rgba(255,200,0,0.9); }
-.dnd .avatar    { box-shadow: 0 0 25px rgba(255,0,0,1); }
 
 /* Fade animation */
 @keyframes fadeIn {
@@ -159,20 +154,20 @@ footer {
 <h2 style="margin-top:40px;">👑 Staff</h2>
 
 <div class="staff-cards">
-    <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card" data-id="925339379751329852">
-        <img class="avatar" src="" alt="Strax Avatar">
+    <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card">
+        <img class="avatar" src="https://cdn.discordapp.com/avatars/925339379751329852/a_08086420f12612ec7e196b2ae85feb20.gif">
         <span>Strax</span>
     </a>
-    <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card" data-id="1327983625144238092">
-        <img class="avatar" src="" alt="Leo Avatar">
+    <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card">
+        <img class="avatar" src="https://cdn.discordapp.com/avatars/1327983625144238092/7ef707180f9e9555b78b40fced2e5d18.webp">
         <span>Leo</span>
     </a>
-    <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card" data-id="1137672913198260234">
-        <img class="avatar" src="" alt="Pepe Avatar">
+    <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card">
+        <img class="avatar" src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp">
         <span>Pepe</span>
     </a>
-    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card" data-id="1114657059913343117">
-        <img class="avatar" src="" alt="Koko Avatar">
+    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card">
+        <img class="avatar" src="https://cdn.discordapp.com/avatars/1114657059913343117/d8564ac76e341bff6a4003e96afe4cd9.webp">
         <span>Koko</span>
     </a>
 </div>
@@ -185,40 +180,9 @@ footer {
 <a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">Follow on TikTok 🎵</a>
 
 <footer>© TrueElites.com</footer>
+
 </div>
 </div>
-
-<script>
-const REFRESH_INTERVAL = 30000; // 30 seconds
-const staffCards = document.querySelectorAll('.discord-card');
-
-function updateStaff() {
-    staffCards.forEach(card => {
-        const id = card.dataset.id;
-        fetch(`https://api.lanyard.rest/v1/users/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            // Update status
-            card.classList.remove('online','idle','dnd');
-            const status = data.data?.discord_status;
-            if(status) card.classList.add(status);
-
-            // Update avatar dynamically (GIFs and real-time)
-            const avatarHash = data.data?.discord_user?.avatar;
-            if(avatarHash) {
-                const isGif = avatarHash.startsWith('a_') ? 'gif' : 'png';
-                card.querySelector('.avatar').src = `https://cdn.discordapp.com/avatars/${id}/${avatarHash}.${isGif}?size=256`;
-            }
-        })
-        .catch(err => console.log(err));
-    });
-}
-
-// Initial load
-updateStaff();
-// Auto-refresh every 30s
-setInterval(updateStaff, REFRESH_INTERVAL);
-</script>
 
 </body>
 </html>
