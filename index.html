@@ -76,7 +76,6 @@ h1 {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    transition: transform 0.3s;
 }
 
 .discord-card span {
@@ -90,6 +89,7 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Buttons */
 .join-btn {
     display: inline-block;
     margin-top: 40px;
@@ -116,14 +116,8 @@ h1 {
     box-shadow:
         0 0 10px rgba(37,244,238,0.8),
         0 0 20px rgba(254,44,85,0.8);
-    transition: transform 0.2s, box-shadow 0.2s;
 }
-.tiktok-btn:hover {
-    transform: scale(1.08);
-    box-shadow:
-        0 0 15px rgba(37,244,238,1),
-        0 0 30px rgba(254,44,85,1);
-}
+.tiktok-btn:hover { transform: scale(1.08); }
 
 footer {
     margin-top: 60px;
@@ -151,30 +145,36 @@ footer {
 <h2 style="margin-top:40px;">👑 Staff</h2>
 
 <div class="staff-cards">
+
 <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card">
-    <img class="avatar" src="https://media.discordapp.net/attachments/1457360664719921237/1469468058304253982/6ea952c00451856c30c3c2a935011f40.gif?ex=6987c446&is=698672c6&hm=d43174063b1df0fa0583d3fafd843046a940e357a8d3f05ac8f25cd500135e31&=" alt="Strax Avatar">
+    <img class="avatar"
+         src="https://media.discordapp.net/attachments/1457360664719921237/1469468058304253982/6ea952c00451856c30c3c2a935011f40.gif"
+         alt="Strax">
     <span>Strax</span>
 </a>
 
 <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card">
-    <img class="avatar" src="https://cdn.discordapp.com/avatars/1327983625144238092/7ef707180f9e9555b78b40fced2e5d18.webp" alt="Leo Avatar">
+    <img class="avatar"
+         src="https://cdn.discordapp.com/avatars/1327983625144238092/f94052ef3122c52325ac9f31f7c6c30a.webp?size=256"
+         alt="Leo">
     <span>Leo</span>
 </a>
 
 <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card">
-    <img class="avatar" src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp" alt="Pepe Avatar">
+    <img class="avatar"
+         src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp?size=256"
+         alt="Pepe">
     <span>Pepe</span>
 </a>
 
 <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card">
-    <img class="avatar" src="https://cdn.discordapp.com/avatars/1114657059913343117/d8564ac76e341bff6a4003e96afe4cd9.webp" alt="Koko Avatar">
+    <img class="avatar"
+         src="https://cdn.discordapp.com/avatars/1114657059913343117/834f02ec98acad13b08f3669ba4aedf9.webp?size=256"
+         alt="Koko">
     <span>Koko</span>
 </a>
-</div>
 
-<p style="margin-top:40px;">
-    <strong>We do a lot of cool stuff, giveaways, anime related, keeping it fun and not strict❤️</strong>
-</p>
+</div>
 
 <a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">Join the Discord 🚀</a><br>
 <a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">Follow on TikTok 🎵</a>
@@ -183,6 +183,5 @@ footer {
 
 </div>
 </div>
-
 </body>
 </html>
