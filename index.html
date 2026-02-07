@@ -30,6 +30,7 @@ h1 {
     text-shadow: 0 0 25px rgba(255,0,0,.6);
 }
 
+/* STAFF */
 .staff-cards {
     display: flex;
     flex-wrap: wrap;
@@ -52,18 +53,20 @@ h1 {
     border: 3px solid #ff2e2e;
 }
 
-.discord-card span {
-    display: block;
+.name {
     margin-top: 10px;
     font-weight: bold;
     color: #ff4b4b;
+    font-size: 1.05rem;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+.role {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 2px;
 }
 
+/* Buttons */
 .join-btn, .tiktok-btn {
     display: inline-block;
     margin-top: 30px;
@@ -88,6 +91,11 @@ footer {
     margin-top: 60px;
     opacity: .6;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 
@@ -103,34 +111,31 @@ footer {
 <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card">
 <img class="avatar"
 src="https://cdn.discordapp.com/avatars/925339379751329852/08086420f12612ec7e196b2ae85feb20.webp?size=256">
-<span>Strax</span>
+<div class="name">Strax</div>
+<div class="role">True Owner</div>
 </a>
 
 <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card">
 <img class="avatar"
 src="https://cdn.discordapp.com/avatars/1327983625144238092/f94052ef3122c52325ac9f31f7c6c30a.webp?size=256">
-<span>Leo</span>
+<div class="name">Leo</div>
+<div class="role">Founder</div>
 </a>
 
 <a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card">
 <img class="avatar"
 src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp?size=256">
-<span>Pepe</span>
+<div class="name">Pepe</div>
+<div class="role">Co-Founder</div>
 </a>
 
 <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card">
 <img class="avatar"
 src="https://cdn.discordapp.com/avatars/1114657059913343117/834f02ec98acad13b08f3669ba4aedf9.webp?size=256">
-<span>Koko</span>
+<div class="name">Koko</div>
+<div class="role">True CEO</div>
 </a>
 
 </div>
 
-<a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">Join Discord</a><br>
-<a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">TikTok</a>
-
-<footer>© TrueElites</footer>
-
-</div>
-</body>
-</html>
+<a class="join-btn" href="https://discord.gg/ptMZ2udMqG" ta
