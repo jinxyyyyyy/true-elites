@@ -12,51 +12,28 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    color: #eaeaea;
     background: #0b0b0b;
-}
-
-.overlay {
-    background: rgba(0,0,0,0.6);
-    min-height: 100vh;
-    padding: 50px 20px;
+    color: #eaeaea;
 }
 
 .container {
     max-width: 900px;
     margin: auto;
     text-align: center;
+    padding: 50px 20px;
 }
 
 h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
     color: #ff2e2e;
-    text-shadow: 0 0 25px rgba(255,0,0,0.6);
+    text-shadow: 0 0 25px rgba(255,0,0,.6);
 }
 
-.tagline {
-    margin-bottom: 40px;
-    opacity: 0.85;
-}
-
-.server-box {
-    background: rgba(255,255,255,0.06);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 0 30px rgba(255,0,0,0.25);
-}
-
-.server-text {
-    white-space: pre-line;
-    font-family: monospace;
-}
-
-/* STAFF CARDS */
 .staff-cards {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
     margin-top: 40px;
 }
@@ -64,18 +41,15 @@ h1 {
 .discord-card {
     text-decoration: none;
     color: inherit;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.8s ease forwards;
-    transition: transform 0.2s;
+    animation: fadeIn .8s ease forwards;
 }
-.discord-card:hover { transform: scale(1.05); }
 
 .avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid #ff2e2e;
 }
 
 .discord-card span {
@@ -86,72 +60,77 @@ h1 {
 }
 
 @keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Buttons */
-.join-btn {
+.join-btn, .tiktok-btn {
     display: inline-block;
-    margin-top: 40px;
-    padding: 15px 45px;
+    margin-top: 30px;
+    padding: 14px 40px;
     border-radius: 30px;
     text-decoration: none;
     color: white;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, #ff0000, #ff4b4b);
-    box-shadow: 0 0 20px rgba(255,0,0,0.6);
-    transition: transform 0.2s;
 }
-.join-btn:hover { transform: scale(1.08); }
+
+.join-btn {
+    background: linear-gradient(135deg,#ff0000,#ff4b4b);
+}
 
 .tiktok-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 45px;
-    border-radius: 30px;
-    text-decoration: none;
-    color: white;
-    font-size: 1.1rem;
-    background: #000;
+    background: black;
     box-shadow:
-        0 0 10px rgba(37,244,238,0.8),
-        0 0 20px rgba(254,44,85,0.8);
+        0 0 10px #25f4ee,
+        0 0 20px #fe2c55;
 }
-.tiktok-btn:hover { transform: scale(1.08); }
 
 footer {
     margin-top: 60px;
-    opacity: 0.6;
-    font-size: 0.85rem;
+    opacity: .6;
 }
 </style>
 </head>
 
 <body>
-<div class="overlay">
 <div class="container">
 
 <h1>༺𓆩 メ Elites ༒︎</h1>
-<p class="tagline">Semi-toxic • Anime • Active • Giveaways • Cool Stuff</p>
 
-<div class="server-box">
-<div class="server-text">
-╰› active ⟡ new ⛩ add pfps × banners
-𑣲 ╰›▬▬ι═ not strict═══ﺤ ノ メ anime
->⩊< ⌞We’ll see what our server turns into..】
-</div>
-</div>
-
-<h2 style="margin-top:40px;">👑 Staff</h2>
+<h2>👑 Staff</h2>
 
 <div class="staff-cards">
 
 <a href="https://discord.com/users/925339379751329852" target="_blank" class="discord-card">
-    <img class="avatar"
-         src="https://media.discordapp.net/attachments/1457360664719921237/1469468058304253982/6ea952c00451856c30c3c2a935011f40.gif"
-         alt="Strax">
-    <span>Strax</span>
+<img class="avatar"
+src="https://cdn.discordapp.com/avatars/925339379751329852/08086420f12612ec7e196b2ae85feb20.webp?size=256">
+<span>Strax</span>
 </a>
 
 <a href="https://discord.com/users/1327983625144238092" target="_blank" class="discord-card">
-    <img class="avatar"
+<img class="avatar"
+src="https://cdn.discordapp.com/avatars/1327983625144238092/f94052ef3122c52325ac9f31f7c6c30a.webp?size=256">
+<span>Leo</span>
+</a>
+
+<a href="https://discord.com/users/1137672913198260234" target="_blank" class="discord-card">
+<img class="avatar"
+src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp?size=256">
+<span>Pepe</span>
+</a>
+
+<a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card">
+<img class="avatar"
+src="https://cdn.discordapp.com/avatars/1114657059913343117/834f02ec98acad13b08f3669ba4aedf9.webp?size=256">
+<span>Koko</span>
+</a>
+
+</div>
+
+<a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">Join Discord</a><br>
+<a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">TikTok</a>
+
+<footer>© TrueElites</footer>
+
+</div>
+</body>
+</html>
