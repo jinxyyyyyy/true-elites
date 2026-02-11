@@ -16,11 +16,51 @@
       color: #eaeaea;
     }
 
+    /* Top Menu */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+      z-index: 1000;
+    }
+
+    .dropdown {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: #111;
+      border: 1px solid #ff2e2e;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      min-width: 180px;
+      z-index: 1000;
+    }
+
+    .dropdown a, .dropdown select {
+      color: white;
+      text-decoration: none;
+      padding: 8px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .dropdown a:hover {
+      background: #ff2e2e;
+    }
+
     .container {
       max-width: 900px;
       margin: auto;
       text-align: center;
-      padding: 50px 20px;
+      padding: 80px 20px;
     }
 
     h1 {
@@ -28,6 +68,13 @@
       font-size: 3rem;
       color: #ff2e2e;
       text-shadow: 0 0 25px rgba(255,0,0,.6);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+      display: block;
     }
 
     .staff-cards {
@@ -41,7 +88,6 @@
     .discord-card {
       text-decoration: none;
       color: inherit;
-      animation: fadeIn .8s ease forwards;
     }
 
     .avatar {
@@ -56,13 +102,11 @@
       margin-top: 10px;
       font-weight: bold;
       color: #ff4b4b;
-      font-size: 1.05rem;
     }
 
     .role {
       font-size: 0.85rem;
       opacity: 0.7;
-      margin-top: 2px;
     }
 
     .join-btn, .tiktok-btn {
@@ -80,66 +124,119 @@
 
     .tiktok-btn {
       background: black;
-      box-shadow:
-        0 0 10px #25f4ee,
-        0 0 20px #fe2c55;
+      box-shadow: 0 0 10px #25f4ee, 0 0 20px #fe2c55;
     }
 
     footer {
       margin-top: 60px;
       opacity: .6;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>༺𓆩 メ Elites ༒︎</h1>
-    <h2>👑 Staff</h2>
+<div class="menu-btn" onclick="toggleMenu()">⋮</div>
 
-    <div class="staff-cards">
+<div class="dropdown" id="menu">
+  <a href="#staff" id="menuStaff">Staff</a>
+  <a href="https://discord.gg/ptMZ2udMqG" target="_blank" id="menuJoin">Join Discord</a>
+  <a href="https://www.tiktok.com/@strax_yy" target="_blank">TikTok</a>
+  <select onchange="changeLanguage(this.value)">
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    <option value="zh">Chinese</option>
+    <option value="ar">Arabic</option>
+    <option value="hi">Hindi</option>
+  </select>
+</div>
 
-      <!-- STRAX -->
-      <a href="https://guns.lol/sb_ls" target="_blank" class="discord-card">
-        <img class="avatar" src="https://cdn.discordapp.com/avatars/925339379751329852/08086420f12612ec7e196b2ae85feb20.webp?size=256">
-        <div class="name">Strax</div>
-        <div class="role">True Owner</div>
-      </a>
+<div class="container">
 
-      <!-- LEO -->
-      <a href="https://guns.lol/82gz" target="_blank" class="discord-card">
-        <img class="avatar" src="https://cdn.discordapp.com/avatars/1327983625144238092/f94052ef3122c52325ac9f31f7c6c30a.webp?size=256">
-        <div class="name">Leo</div>
-        <div class="role">Founder</div>
-      </a>
+  <h1>༺𓆩 メ Elites ༒︎</h1>
 
-      <!-- PEPE -->
-      <a href="https://guns.lol/j1nxyyy" target="_blank" class="discord-card">
-        <img class="avatar" src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp?size=256">
-        <div class="name">Pepe</div>
-        <div class="role">Co-Founder</div>
-      </a>
+  <strong class="subtitle" id="subtitleText">
+    We are stox, not strict, friendly, and open to partnership w other servers<br>
+    Partnership requirements are only don't be nsfw server and must be above 20 members
+  </strong>
 
-      <!-- KOKO (FIXED) -->
-      <a href="https://guns.lol/koko67" target="_blank" class="discord-card">
-        <img class="avatar" src="https://cdn.discordapp.com/avatars/1114657059913343117/834f02ec98acad13b08f3669ba4aedf9.webp?size=256">
-        <div class="name">Koko</div>
-        <div class="role">True CEO</div>
-      </a>
+  <h2 id="staffTitle">👑 Staff</h2>
 
-    </div>
+  <div class="staff-cards" id="staff">
 
-    <a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank">Join Discord</a><br>
-    <a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">TikTok</a>
+    <a href="https://guns.lol/sb_ls" target="_blank" class="discord-card">
+      <img class="avatar" src="https://cdn.discordapp.com/avatars/925339379751329852/08086420f12612ec7e196b2ae85feb20.webp?size=256">
+      <div class="name">Strax</div>
+      <div class="role">True Owner</div>
+    </a>
 
-    <footer>© TrueElites</footer>
+    <a href="https://guns.lol/82gz" target="_blank" class="discord-card">
+      <img class="avatar" src="https://cdn.discordapp.com/avatars/1327983625144238092/f94052ef3122c52325ac9f31f7c6c30a.webp?size=256">
+      <div class="name">Leo</div>
+      <div class="role">Founder</div>
+    </a>
+
+    <a href="https://guns.lol/j1nxyyy" target="_blank" class="discord-card">
+      <img class="avatar" src="https://cdn.discordapp.com/avatars/1137672913198260234/073e5ef448d4e24a36437d8d5d279421.webp?size=256">
+      <div class="name">Pepe</div>
+      <div class="role">Co-Founder / Mechanic</div>
+    </a>
+
+    <a href="https://discord.com/users/1114657059913343117" target="_blank" class="discord-card">
+      <img class="avatar" src="https://cdn.discordapp.com/avatars/1114657059913343117/834f02ec98acad13b08f3669ba4aedf9.webp?size=256">
+      <div class="name">Koko</div>
+      <div class="role">True CEO</div>
+    </a>
 
   </div>
+
+  <a class="join-btn" href="https://discord.gg/ptMZ2udMqG" target="_blank" id="joinBtn">Join Discord</a><br>
+  <a class="tiktok-btn" href="https://www.tiktok.com/@strax_yy" target="_blank">TikTok</a>
+
+  <footer>© TrueElites</footer>
+
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+const translations = {
+  en: {
+    subtitle: "We are stox, not strict, friendly, and open to partnership w other servers<br>Partnership requirements are only don't be nsfw server and must be above 20 members",
+    staff: "👑 Staff",
+    join: "Join Discord"
+  },
+  es: {
+    subtitle: "Somos relajados, amigables y abiertos a asociaciones con otros servidores.<br>Requisitos: no ser servidor NSFW y tener más de 20 miembros",
+    staff: "👑 Equipo",
+    join: "Unirse a Discord"
+  },
+  zh: {
+    subtitle: "我们很随和、友好，并愿意与其他服务器合作。<br>合作要求：不能是NSFW服务器，成员必须超过20人",
+    staff: "👑 员工",
+    join: "加入Discord"
+  },
+  ar: {
+    subtitle: "نحن ودودون ومنفتحون على الشراكات مع خوادم أخرى.<br>الشروط: ألا يكون الخادم NSFW ويجب أن يزيد عن 20 عضوًا",
+    staff: "👑 الطاقم",
+    join: "انضم إلى ديسكورد"
+  },
+  hi: {
+    subtitle: "हम दोस्ताना और अन्य सर्वरों के साथ साझेदारी के लिए खुले हैं।<br>शर्तें: NSFW सर्वर नहीं होना चाहिए और 20 से अधिक सदस्य होने चाहिए",
+    staff: "👑 स्टाफ",
+    join: "डिस्कॉर्ड जॉइन करें"
+  }
+};
+
+function changeLanguage(lang) {
+  document.getElementById("subtitleText").innerHTML = translations[lang].subtitle;
+  document.getElementById("staffTitle").innerHTML = translations[lang].staff;
+  document.getElementById("joinBtn").innerHTML = translations[lang].join;
+}
+</script>
+
 </body>
 </html>
